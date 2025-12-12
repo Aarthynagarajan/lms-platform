@@ -11,6 +11,10 @@ app.use(express.json());
 connectDB();
 
 // Routes
+app.use("/api/submissions", require("./routes/submissionRoutes"));
+app.use("/api/assignments", require("./routes/assignmentRoutes"));
+app.use("/api/lessons", require("./routes/lessonRoutes"));
+app.use("/api/enrollments", require("./routes/enrollmentRoutes"));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/courses', require('./routes/CourseRoutes'));
 app.use('/api/test', require('./routes/testRoutes')); // optional simple route
