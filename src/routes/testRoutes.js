@@ -1,6 +1,18 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const auth = require("../middleware/authMiddleware");
 
-router.get('/hello', (req, res) => res.json({ msg: 'hello from test route' }));
+// PUBLIC route
+router.get("/hello", (req, res) => {
+  res.json({ msg: "hello from test route" });
+});
+
+// PROTECTED route
+router.get("/protected", auth, (req, res) => {
+  res.json({
+    msg: "You reached a protected route",
+    user: req.user
+  });
+});
 
 module.exports = router;
