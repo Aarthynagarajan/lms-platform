@@ -11,6 +11,9 @@ app.use(express.json());
 connectDB();
 
 // Routes
+app.use(require('./middleware/errorHandler'));
+app.use("/api/upload", require("./routes/uploadRoutes"));
+
 app.use("/api/submissions", require("./routes/submissionRoutes"));
 app.use("/api/assignments", require("./routes/assignmentRoutes"));
 app.use("/api/lessons", require("./routes/lessonRoutes"));
